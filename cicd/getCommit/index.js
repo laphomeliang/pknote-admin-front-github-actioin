@@ -1,6 +1,5 @@
 // const core = require('@actions/core')
 // const github = require('@actions/github')
-
 try {
     const ref = github.ref
     core.warning('myInput was not set');
