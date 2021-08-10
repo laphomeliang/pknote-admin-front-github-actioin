@@ -10,4 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: test
-        uses: ./cicd/getCommit/
+        uses: actions/github@v1.0.0
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}"
