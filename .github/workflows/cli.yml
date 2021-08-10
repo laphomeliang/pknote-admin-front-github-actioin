@@ -9,10 +9,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-      
-    - name: test
-      uses: actions/github@v1.0.0
     
     - name: run
       run: |
-        echo "${{ secrets.GITHUB_TOKEN }}"
+        echo "1  $GITHUB_REF"
