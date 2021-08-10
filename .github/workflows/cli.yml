@@ -12,5 +12,7 @@ jobs:
       
     - name: test
       uses: actions/github@v1.0.0
+    
+    - name: run
       run: |
         echo "${{ secrets.GITHUB_TOKEN }}"
