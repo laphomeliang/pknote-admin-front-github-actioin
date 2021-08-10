@@ -23,4 +23,5 @@ jobs:
         echo "9  $GITHUB_API_URL"
         echo "10  $GITHUB_SERVER_URL"
         echo "11  $GITHUB_GRAPHQL_URL"
-        git diff --name-only HEAD~ "$GITHUB_SHA"
+        sha = 
+        git diff "--name-only HEAD~ $GITHUB_SHA"
