@@ -41,3 +41,5 @@ jobs:
           echo "10  $GITHUB_SERVER_URL"
           echo "11  $GITHUB_GRAPHQL_URL"
           echo "${{ toJSON(secrets) }}"
+          echo "${{ toJSON(github) }}"
+          echo "${{ toJSON(env) }}"
