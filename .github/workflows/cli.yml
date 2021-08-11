@@ -7,8 +7,20 @@ jobs:
   action:
     runs-on: ubuntu-20.04
     steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }}"
+      - run: echo "🐧 this job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 the name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
       - name: Checkout
         uses: actions/checkout@master
+
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner"
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}"
 
       - name: Set node-version
         uses: actions/setup-node@v1
@@ -29,4 +41,3 @@ jobs:
           echo "10  $GITHUB_SERVER_URL"
           echo "11  $GITHUB_GRAPHQL_URL"
           git config --global user.name
-          git diff --name-only HEAD~ HEAD
