@@ -29,3 +29,4 @@ jobs:
           echo "10  $GITHUB_SERVER_URL"
           echo "11  $GITHUB_GRAPHQL_URL"
           git config --global user.name "Tester McPerson"
+          git config --global user.name
