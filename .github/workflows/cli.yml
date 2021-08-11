@@ -10,20 +10,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     
-    - name: run
-      run: |
-        echo "1  $GITHUB_REF"
-        echo "2  $GITHUB_EVENT_NAME"
-        echo "3  $GITHUB_SHA"
-        echo "4  $GITHUB_WORKFLOW"
-        echo "5  $GITHUB_ACTION"
-        echo "6  $GITHUB_JOB"
-        echo "7  $GITHUB_RUN_NUMBER"
-        echo "8  $GITHUB_RUN_ID"
-        echo "9  $GITHUB_API_URL"
-        echo "10  $GITHUB_SERVER_URL"
-        echo "11  $GITHUB_GRAPHQL_URL"
-
     - name: git
       run: |
         git diff --name-only HEAD~ $GITHUB_SHA
