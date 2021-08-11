@@ -23,4 +23,3 @@ jobs:
         echo "9  $GITHUB_API_URL"
         echo "10  $GITHUB_SERVER_URL"
         echo "11  $GITHUB_GRAPHQL_URL"
-        git diff --name-only HEAD~ 34eb19f29456ae7c0ad87673ca0254f3c0dd75e5
