@@ -27,6 +27,9 @@ jobs:
         with:
           node-version: 14
           
+      - name: Set env variables
+        uses: ./cicd/ci-const/
+
       - name: run
         run: |
           echo "1  $GITHUB_REF"
@@ -43,3 +46,4 @@ jobs:
           echo "${{ toJSON(secrets) }}"
           echo "${{ toJSON(github) }}"
           echo "${{ toJSON(env) }}"
+          echo "$ACTIONS_RUNTIME_URL"
