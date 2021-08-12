@@ -33,4 +33,4 @@ jobs:
       - name: run
         run: |
           echo "$ACTIONS_RUNTIME_URL"
-          echo ${{ git diff --name-only HEAD~ HEAD }}
+          git diff --name-only HEAD~ HEAD
