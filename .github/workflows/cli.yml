@@ -34,5 +34,5 @@ jobs:
         run: |
           echo "$ACTIONS_RUNTIME_URL"
 
-      - name: actions/exec
-        uses: actions/exec
+      - name: actions-github
+        uses: actions/github@v1.0.0
