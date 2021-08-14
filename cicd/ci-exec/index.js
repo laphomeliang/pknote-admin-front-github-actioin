@@ -7,7 +7,7 @@ try {
         core.info(gitPath)
         core.info(process.env.GITHUB_SHA)
         // const args = ['diff', '--name-only', `HEAD~ ${process.env.GITHUB_SHA}`]
-        const args = ['log']
+        const args = ['diff', '--name-only', `HEAD^ HEAD`]
         exec.exec(`"${gitPath}"`, args).then((pathArr) => {
             core.info(pathArr)
         })
