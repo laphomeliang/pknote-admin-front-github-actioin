@@ -19,7 +19,7 @@ jobs:
 
       - name: List files in the repository
         run: |
-          ls ${{ github.workspace }}
+          ls -all ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}"
 
       - name: Set node-version
