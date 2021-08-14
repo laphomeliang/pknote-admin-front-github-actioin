@@ -1,6 +1,4 @@
-
-name: 'install ci'
-working-directory: cicd/ci-exec
+name: 'Set env variables'
 description: 'Sets certain env variables so that e2e artifact upload and download can be tested in a shell'
 run: |
   npm ci

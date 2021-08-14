@@ -34,10 +34,5 @@ jobs:
         run: |
           echo "$ACTIONS_RUNTIME_URL"
 
-      - name: install ci
-        run: |
-          npm ci
-        working-directory: ./cicd/ci-exec/
-
       - name: Compile artifact package
         uses: ./cicd/ci-exec/
