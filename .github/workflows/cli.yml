@@ -35,7 +35,7 @@ jobs:
           echo "$ACTIONS_RUNTIME_URL"
 
       - name: Compile artifact package
-        uses: ./cicd/ci-exec/
+        uses: ./cicd/ci-exec
 
       - name: 'install'
         run: |
