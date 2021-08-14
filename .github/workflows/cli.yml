@@ -34,13 +34,6 @@ jobs:
         run: |
           echo "$ACTIONS_RUNTIME_URL"
 
-      - name: actions-github
-        uses: actions/github@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: comment "Hello World"
-
       - name: Compile artifact package
         uses: ./cicd/ci-exec/
 
