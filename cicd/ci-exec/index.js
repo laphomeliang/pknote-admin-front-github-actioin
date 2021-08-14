@@ -6,7 +6,7 @@ try {
     io.which('git', true).then((gitPath) => {
         core.info(gitPath)
         const args = ['diff', '--name-only', "HEAD~ HEAD"]
-        exec.exec(`"${gitPath}"`, args, options).then((pathArr) => {
+        exec.exec(`"${gitPath}"`, args).then((pathArr) => {
             core.info(pathArr)
         })
     })
