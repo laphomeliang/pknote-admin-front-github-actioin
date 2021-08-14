@@ -19,7 +19,7 @@ jobs:
 
       - name: List files in the repository
         run: |
-          -d "/.git"
+          exist "/.git"
           ls -all ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}"
 
