@@ -36,3 +36,5 @@ jobs:
 
       - name: Compile artifact package
         uses: ./cicd/ci-exec
+        run: |
+          npm ci

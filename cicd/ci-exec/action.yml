@@ -4,5 +4,4 @@ working-directory: cicd/ci-exec
 description: 'Sets certain env variables so that e2e artifact upload and download can be tested in a shell'
 runs:
   using: 'node12'
-  npm ci
   main: 'index.js'
