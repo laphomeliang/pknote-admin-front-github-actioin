@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14
-          
+
       - name: Set env variables
         uses: ./cicd/ci-const/
 
@@ -40,3 +40,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           args: comment "Hello World"
+
+      - name: Compile artifact package
+        uses: ./cicd/ci-const/

@@ -1,0 +1,15 @@
+{
+  "name": "ci-exec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/exec": "^1.1.0",
+    "@actions/io": "^1.1.1"
+  }
+}
