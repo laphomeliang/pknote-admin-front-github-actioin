@@ -40,5 +40,4 @@ jobs:
       - name: 'install'
         run: |
           npm ci
-          node index.js
         working-directory: cicd/ci-exec
