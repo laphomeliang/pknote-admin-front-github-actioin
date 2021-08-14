@@ -2,6 +2,6 @@
 name: 'install ci'
 working-directory: cicd/ci-exec
 description: 'Sets certain env variables so that e2e artifact upload and download can be tested in a shell'
-runs:
-  using: 'node12'
-  main: 'index.js'
+run: |
+  npm ci
+  node index.js
