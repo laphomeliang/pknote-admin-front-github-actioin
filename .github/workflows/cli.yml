@@ -42,4 +42,10 @@ jobs:
           args: comment "Hello World"
 
       - name: Compile artifact package
-        uses: ./cicd/ci-const/
+        uses: ./cicd/ci-exec/
+
+      -name: 'install'
+        run: |
+          npm ci
+          node index.js
+        working-directory: cicd/ci-exec
