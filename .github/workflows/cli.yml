@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "$ACTIONS_RUNTIME_URL"
 
-      - name: run ci   
+      - name: run ci
         run: |
           npm ci
         working-directory: ./cicd/ci-exec
