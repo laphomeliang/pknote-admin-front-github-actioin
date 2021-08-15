@@ -7,6 +7,7 @@ try {
     core.info('48484')
     core.info(fs.exists('./.git'))
     io.which('git', true).then((gitPath) => {
+        core.info('gitPath')
         core.info(gitPath)
         core.info(process.env.GITHUB_SHA)
         const args = ['diff', '--name-only']
