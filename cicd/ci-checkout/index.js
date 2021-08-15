@@ -7,7 +7,7 @@ try {
     new Promise(async function (resolve, reject) {
         const gitPath = await io.which('git', true)
         console.log(gitPath)
-        const args1 = ['clone', `https://github.com/${ github.repository }`, './public/action']
+        const args1 = ['clone', `https://github.com/${ process.env.GITHUB_REPOSITORY }`, './public/action'] // github.repository
         const gitFilePath = `"${gitPath}"`
         await exec.exec(gitFilePath, args1)
         const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD', './public/action']
