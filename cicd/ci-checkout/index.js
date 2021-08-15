@@ -10,6 +10,11 @@ try {
         const args1 = ['clone', `https://github.com/${ process.env.GITHUB_REPOSITORY }`, './public/action'] // github.repository
         const gitFilePath = `"${gitPath}"`
         await exec.exec(gitFilePath, args1)
+        setTimeout(async () => {
+            const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD', './public/action']
+            await exec.exec(gitFilePath, args2)
+            core.info(':rocket: clone code from repository success!')
+        }, 2000);
     })
 } catch (error) {
     
