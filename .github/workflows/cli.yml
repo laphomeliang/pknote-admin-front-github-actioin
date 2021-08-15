@@ -19,7 +19,7 @@ jobs:
 
       - name: List files in the repository
         run: |
-          ls -all ${{ github.workspace }}
+          ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}"
 
       - name: Set node-version
@@ -33,7 +33,7 @@ jobs:
       - name: run
         run: |
           echo "$ACTIONS_RUNTIME_URL"
-          git diff --name-only
+          echo $(git diff --name-only)
 
       - name: run ci
         run: |
