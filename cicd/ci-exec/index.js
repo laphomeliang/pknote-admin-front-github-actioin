@@ -4,6 +4,7 @@ const io = require('@actions/io')
 const core = require('@actions/core')
 
 try {
+    core.info('48484')
     core.info(fs.exists('./.git'))
     io.which('git', true).then((gitPath) => {
         core.info(gitPath)
