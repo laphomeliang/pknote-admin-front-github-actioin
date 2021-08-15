@@ -6,11 +6,11 @@ const core = require('@actions/core')
 try {
     core.info('48484')
     new Promise(async function (resolve, reject) {
-        core.info('9894')
         const gitPath = await io.which('git', true)
         console.log(gitPath)
         const args = ['diff', '--name-only']
-        exec.exec(`"${gitPath}"`, args)
+        const pathArr = await exec.exec(`"${gitPath}"`, args)
+        core.info(pathArr)
     })
     // io.which('git', true).then((gitPath) => {
     //     core.info('gitPath')
