@@ -25,7 +25,7 @@ jobs:
       - name: Set node-version
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 12
 
       - name: Set env variables
         uses: ./cicd/ci-const/
