@@ -9,7 +9,7 @@ try {
         const gitPath = await io.which('git', true)
         console.log(gitPath)
         const args = ['diff', '--name-only']
-        const pathArr = await exec.exec(`"${gitPath}"`, args)
+        const pathArr = $(exec.exec(`"${gitPath}"`, args))
         core.info(pathArr)
     })
     // io.which('git', true).then((gitPath) => {
