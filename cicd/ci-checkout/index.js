@@ -11,9 +11,9 @@ try {
         const gitFilePath = `"${gitPath}"`
         await exec.exec(gitFilePath, args1)
         setTimeout(async () => {
-            const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD', './public/action']
-            await exec.exec(gitFilePath, args2)
+            const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
+            await exec.exec(gitFilePath, args2, { cwd: './public/action' })
             core.info(':rocket: clone code from repository success!')
-        }, 100000);
+        }, 300000);
     })
 } catch (error) {}
