@@ -33,7 +33,7 @@ jobs:
       - name: run
         run: |
           echo "$ACTIONS_RUNTIME_URL"
-          echo $(git diff --name-only)
+          git diff --name-only 1c78540b51d2a47e88e4d5149bfed5fa50d9ea1a~ 371eb347b5d09c5a84c9e8b1e2c106b11e163dcc
 
       - name: run ci
         run: |
