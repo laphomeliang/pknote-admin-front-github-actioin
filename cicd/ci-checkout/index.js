@@ -8,14 +8,14 @@ try {
     new Promise(async function (resolve, reject) {
         const gitPath = await io.which('git', true)
         console.log(gitPath)
-        const args1 = ['clone', `https://github.com/${ process.env.GITHUB_REPOSITORY }`, './public/action']
+        const args1 = ['clone', `https://github.com/${ process.env.GITHUB_REPOSITORY }`, `${ process.env.GITHUB_REPOSITORY }`]
         const gitFilePath = `"${gitPath}"`
         await exec.exec(gitFilePath, args1)
         setTimeout(async () => {
             const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
             let myOutput = ''
             const options = {
-                cwd: './public/action',
+                cwd: `${ process.env.GITHUB_REPOSITORY }`,
                 listeners: {
                     stdout: data => {
                         myOutput = data.toString();
@@ -25,6 +25,7 @@ try {
             await exec.exec(gitFilePath, args2, options)
             core.info(':rocket: clone code from repository success and get the commited path!')
             core.info(myOutput)
+            core.info(filePath)
             // fs.appendFileSync(filePath, `COMMIT_PATHS=${myOutput}${os.EOL}`, {
             //     encoding: 'utf8'
             // })
