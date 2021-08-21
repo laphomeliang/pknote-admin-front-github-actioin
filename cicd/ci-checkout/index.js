@@ -25,7 +25,6 @@ try {
             await exec.exec(gitFilePath, args2, options)
             core.info(':rocket: clone code from repository success and get the commited path!')
             core.info(myOutput)
-            core.info(filePath)
             fs.appendFileSync(filePath, `COMMIT_PATHS=${myOutput}${os.EOL}`, {
                 encoding: 'utf8'
             })
