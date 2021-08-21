@@ -18,7 +18,7 @@ try {
                 cwd: './public/action',
                 listeners: {
                     stdout: data => {
-                        myOutput += data.toString();
+                        myOutput = data.toString();
                     },
                     stdline: data => {
                         myLine += data.toString();
