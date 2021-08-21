@@ -12,7 +12,7 @@ try {
         await exec.exec(gitFilePath, args1)
         setTimeout(async () => {
             const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
-            const paths = await exec.exec(gitFilePath, args2, { cwd: './public/action' })
+            const paths = $(await exec.exec(gitFilePath, args2, { cwd: './public/action' }))
             core.info(':rocket: clone code from repository success!')
             core.info(paths)
         }, 2000);
