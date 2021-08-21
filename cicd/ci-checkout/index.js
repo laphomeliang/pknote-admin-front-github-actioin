@@ -23,7 +23,7 @@ try {
                     stdline: data => {
                         myLine += data.toString();
                     }
-                  }
+                }
             }
             await exec.exec(gitFilePath, args2, options)
             core.info(':rocket: clone code from repository success!')
