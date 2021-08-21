@@ -21,7 +21,7 @@ try {
                         myOutput = data.toString();
                     },
                     stdline: data => {
-                        myLine += data.toString();
+                        myLine = data.toString();
                     }
                 }
             }
