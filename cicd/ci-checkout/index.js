@@ -14,6 +14,6 @@ try {
             const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
             await exec.exec(gitFilePath, args2, { cwd: './public/action' })
             core.info(':rocket: clone code from repository success!')
-        }, 20000);
+        }, 2000);
     })
 } catch (error) {}
