@@ -12,8 +12,8 @@ try {
         await exec.exec(gitFilePath, args1)
         setTimeout(async () => {
             const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
-            let myOutput = '';
-            let myLine = ''; 
+            let myOutput = ''
+            let myLine = ''
             const options = {
                 cwd: './public/action',
                 listeners: {
