@@ -27,8 +27,8 @@ try {
             }
             await exec.exec(gitFilePath, args2, options)
             core.info(':rocket: clone code from repository success!')
-            core.info(myOutput)
             core.info(myLine)
+            core.info(myOutput)
         }, 2000);
     })
 } catch (error) {}
