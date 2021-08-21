@@ -12,9 +12,23 @@ try {
         await exec.exec(gitFilePath, args1)
         setTimeout(async () => {
             const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
-            const paths = $(await exec.exec(gitFilePath, args2, { cwd: './public/action' }))
+            let myOutput = '';
+            let myLine = ''; 
+            const options = {
+                cwd: './public/action',
+                listeners: {
+                    stdout: (data: Buffer) => {
+                        myOutput += data.toString();
+                    },
+                    stdline: (data: string) => {
+                        myLine += data.toString();
+                    }
+                  }
+            }
+            await exec.exec(gitFilePath, args2, options)
             core.info(':rocket: clone code from repository success!')
-            core.info(paths)
+            core.info(myOutput)
+            core.info(myLine)
         }, 2000);
     })
 } catch (error) {}
