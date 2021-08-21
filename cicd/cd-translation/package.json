@@ -1,16 +1,14 @@
 {
-  "name": "ci-exec",
+  "name": "cd-translation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "laphome",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.4.0",
-    "@actions/exec": "^1.1.0",
-    "@actions/io": "^1.1.1"
+    "@actions/core": "^1.5.0"
   }
 }

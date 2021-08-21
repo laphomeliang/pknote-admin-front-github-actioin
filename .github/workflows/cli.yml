@@ -19,7 +19,7 @@ jobs:
       - name: Set env variables
         uses: ./cicd/ci-const/
 
-      - name: run ci
+      - name: run ci ci-checkout
         run: |
           npm ci
         working-directory: ./cicd/ci-checkout
@@ -27,7 +27,10 @@ jobs:
       - name: Checkout ci-checkout
         uses: ./cicd/ci-checkout/
 
-      - name: run ci
+      - name: run ci cd-translation
         run: |
           npm ci
-        working-directory: ./cicd/ci-exec
+        working-directory: ./cicd/cd-translation
+
+      - name: translate cd-translation
+        uses: ./cicd/cd-translation/

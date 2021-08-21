@@ -1,8 +1,9 @@
 const fs = require('fs')
+const os = require('os');
+const filePath = process.env[`GITHUB_ENV`]
 const exec = require('@actions/exec')
 const io = require('@actions/io')
 const core = require('@actions/core')
-
 try {
     new Promise(async function (resolve, reject) {
         const gitPath = await io.which('git', true)
@@ -13,22 +14,20 @@ try {
         setTimeout(async () => {
             const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
             let myOutput = ''
-            let myLine = ''
             const options = {
                 cwd: './public/action',
                 listeners: {
                     stdout: data => {
                         myOutput = data.toString();
-                    },
-                    stdline: data => {
-                        myLine = data.toString();
                     }
                 }
             }
             await exec.exec(gitFilePath, args2, options)
-            core.info(':rocket: clone code from repository success!')
-            core.info(myLine)
+            core.info(':rocket: clone code from repository success and get the commited path!')
             core.info(myOutput)
+            fs.appendFileSync(filePath, `COMMIT_PATHS=${myOutput}${os.EOL}`, {
+                encoding: 'utf8'
+            })
         }, 2000);
     })
 } catch (error) {}
