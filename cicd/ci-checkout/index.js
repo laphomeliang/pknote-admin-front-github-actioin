@@ -17,10 +17,10 @@ try {
             const options = {
                 cwd: './public/action',
                 listeners: {
-                    stdout: (data: Buffer) => {
+                    stdout: data => {
                         myOutput += data.toString();
                     },
-                    stdline: (data: string) => {
+                    stdline: data => {
                         myLine += data.toString();
                     }
                   }
