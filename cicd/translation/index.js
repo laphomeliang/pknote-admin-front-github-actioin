@@ -29,7 +29,7 @@ class Translater {
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
         const isHasChinese = this.ChineseTxts.find(txts => txts && txts.length)
         if (!isHasChinese) {
-            core.info('no Chinese file 没有 中文')
+            core.info('no Chinese file 没有中文')
             return
         }
         // 中文的 话

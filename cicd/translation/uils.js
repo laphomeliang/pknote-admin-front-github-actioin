@@ -1,4 +1,5 @@
 const fs = require('fs')
+const core = require('@actions/core')
 const translate = require('deepl')
 const isConnect = (txt, newObj, tempObj) => {
     const { index: nIndex, txt: nTxt } = newObj
@@ -30,6 +31,7 @@ const func = {
         const newTxt = ''
         let txtIndex = 0
         let tempTxt = ''
+        core.info(txts)
         const txtslen = txts.length
         for (let i = 0; i < txtslen; i++) {
             const s = txts[i]
