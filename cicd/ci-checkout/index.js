@@ -7,6 +7,6 @@ try {
         const args1 = ['clone', `https://github.com/${ process.env.GITHUB_REPOSITORY }`, `${ process.env.GITHUB_REPOSITORY }`]
         const gitFilePath = `"${gitPath}"`
         await exec.exec(gitFilePath, args1)
-        core.info(':rocket: clone code from repository success!')
+        core.info('🚀 clone code from repository success!')
     })
 } catch (error) {}

@@ -1,6 +1,7 @@
 const exec = require('@actions/exec')
 const io = require('@actions/io')
 const core = require('@actions/core')
+const Translater = require('../translation/index')
 
 try {
     new Promise(async function (resolve, reject) {
@@ -18,14 +19,18 @@ try {
         }
         await exec.exec(gitFilePath, args2, options)
         core.info('get the commit file paths!')
-        splitPaths(myOutput)
+        const paths = splitPaths(myOutput)
+        const translatePaths = filterPath(paths)
+        new Translater(translatePaths)
     })
 } catch (error) {}
 
+// get all paths of commit files
 function splitPaths(str) {
     const arr = str.split(/\s+/g)
-    arr.forEach((s, i) => {
-        core.info(`${ i }, ${ s }`)
-    });
-    
+    return arr.map(s => s.trim()).filter(s => s)
+}
+// filter unnecessary paths
+function filterPath(arr) {
+    return arr
 }
