@@ -1,6 +1,6 @@
 const fs = require('fs')
 const translate = require('deepl')
-module.exports = {
+const func = {
     // get file text content
     readFile(path) {
         return fs.readFileSync(path, 'utf8')
@@ -144,3 +144,5 @@ module.exports = {
         console.log(str);
     }
 }
+
+module.exports = func
