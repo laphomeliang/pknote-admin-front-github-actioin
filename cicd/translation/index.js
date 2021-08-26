@@ -32,7 +32,7 @@ class Translater {
             core.info('no Chinese file 没有中文')
             return
         }
-        // 中文的 话
+        // 中文的话
         this.rebuildTxts = this.fileTxts.map((txt, i) => {
             const ChineseTxt = this.ChineseTxts[i]
             core.info(ChineseTxt)
