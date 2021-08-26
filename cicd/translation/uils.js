@@ -1,7 +1,5 @@
 const fs = require('fs')
 const translate = require('deepl')
- 
-// is connect text
 const isConnect = (txt, newObj, tempObj) => {
     const { index: nIndex, txt: nTxt } = newObj
     const { index: tIndex, txt: tTxt } = tempObj
@@ -14,7 +12,7 @@ const isConnect = (txt, newObj, tempObj) => {
         }
     }
     return connected
-},
+}
 const func = {
     // get file text content
     readFile(path) {
@@ -27,7 +25,7 @@ const func = {
     },
     // rebuild file text
     rebuildTxts(txt, txts) {
-        console.log(this)
+        const that = this
         const newTxts = []
         const newTxt = ''
         let txtIndex = 0
@@ -55,6 +53,20 @@ const func = {
             txtIndex = tIndex + s.length
         }
         return newTxts
+    },
+    // is connect text
+    isConnect(txt, newObj, tempObj) {
+        const { index: nIndex, txt: nTxt } = newObj
+        const { index: tIndex, txt: tTxt } = tempObj
+        const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
+        let connected = false
+        const regRN = /\r\n/g
+        if (!regRN.test(inTxt)) {
+            if (inTxt.length < 3) {
+                connected = true
+            }
+        }
+        return connected
     },
     // remove Duplicates
     removeDuplicates(txts) {
