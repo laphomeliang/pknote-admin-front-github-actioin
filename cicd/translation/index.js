@@ -27,6 +27,7 @@ class Translater {
         const paths = this.paths
         this.fileTxts = paths.map(path => readFile(path))
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
+        core.info(this.ChineseTxts);
         this.rebuildTxts = this.fileTxts.map((txt, i) => {
             const ChineseTxt = this.ChineseTxts[i]
             core.info(ChineseTxt)
