@@ -1,5 +1,20 @@
 const fs = require('fs')
 const translate = require('deepl')
+ 
+// is connect text
+const isConnect = (txt, newObj, tempObj) => {
+    const { index: nIndex, txt: nTxt } = newObj
+    const { index: tIndex, txt: tTxt } = tempObj
+    const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
+    let connected = false
+    const regRN = /\r\n/g
+    if (!regRN.test(inTxt)) {
+        if (inTxt.length < 3) {
+            connected = true
+        }
+    }
+    return connected
+},
 const func = {
     // get file text content
     readFile(path) {
@@ -12,7 +27,6 @@ const func = {
     },
     // rebuild file text
     rebuildTxts(txt, txts) {
-        const that = this
         const newTxts = []
         const newTxt = ''
         let txtIndex = 0
@@ -28,7 +42,7 @@ const func = {
             }
             if (newTxtslen) {
                 const tempObj = newTxts[newTxtslen - 1]
-                const connected = that.isConnect(txt, newObj, tempObj)
+                const connected = isConnect(txt, newObj, tempObj)
                 if (connected) {
                     tempObj.txt = txt.substring(tempObj.index, tIndex + s.length)
                 } else {
@@ -40,20 +54,6 @@ const func = {
             txtIndex = tIndex + s.length
         }
         return newTxts
-    },
-    // is connect text
-    isConnect: (txt, newObj, tempObj) => {
-        const { index: nIndex, txt: nTxt } = newObj
-        const { index: tIndex, txt: tTxt } = tempObj
-        const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
-        let connected = false
-        const regRN = /\r\n/g
-        if (!regRN.test(inTxt)) {
-            if (inTxt.length < 3) {
-                connected = true
-            }
-        }
-        return connected
     },
     // remove Duplicates
     removeDuplicates(txts) {
