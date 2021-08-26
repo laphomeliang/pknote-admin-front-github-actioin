@@ -32,14 +32,14 @@ class Translater {
             core.info('no Chinese file 没有中文')
             return
         }
-        core.info('paths')
-        core.info(JSON.stringify(this.ChineseTxts))
-        return
         this.rebuildTxts = this.fileTxts.map((txt, i) => {
             const ChineseTxt = this.ChineseTxts[i]
             core.info(ChineseTxt)
             return ChineseTxt && ChineseTxt.length ? rebuildTxts(txt, ChineseTxt) : []
         })
+        core.info('paths')
+        core.info(JSON.stringify(this.rebuildTxts))
+        return
         const ChineseArr = removeDuplicates(this.ChineseTxts).sort((a, b) => a.length - b.length)
         discardExistWords(ChineseArr, ZHlang)
         console.log(ChineseArr)
