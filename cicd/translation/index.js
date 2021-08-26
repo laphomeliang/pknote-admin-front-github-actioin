@@ -37,10 +37,10 @@ class Translater {
             core.info(ChineseTxt)
             return ChineseTxt && ChineseTxt.length ? rebuildTxts(txt, ChineseTxt) : []
         })
-        core.info('path')
-        core.info(JSON.stringify(this.rebuildTxts))
-        return
         const ChineseArr = removeDuplicates(this.ChineseTxts).sort((a, b) => a.length - b.length)
+        core.info('ChineseArr')
+        core.info(JSON.stringify(ChineseArr))
+        return
         discardExistWords(ChineseArr, ZHlang)
         console.log(ChineseArr)
         const res = ChineseArr.length ? translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
