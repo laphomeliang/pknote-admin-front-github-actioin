@@ -27,6 +27,7 @@ const func = {
     },
     // rebuild file text
     rebuildTxts(txt, txts) {
+        console.log(this)
         const newTxts = []
         const newTxt = ''
         let txtIndex = 0
