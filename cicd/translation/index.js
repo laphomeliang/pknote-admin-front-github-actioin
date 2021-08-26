@@ -37,7 +37,7 @@ class Translater {
             core.info(ChineseTxt)
             return ChineseTxt && ChineseTxt.length ? rebuildTxts(txt, ChineseTxt) : []
         })
-        core.info('paths')
+        core.info('path')
         core.info(JSON.stringify(this.rebuildTxts))
         return
         const ChineseArr = removeDuplicates(this.ChineseTxts).sort((a, b) => a.length - b.length)
