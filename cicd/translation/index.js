@@ -26,24 +26,24 @@ class Translater {
     initTranslater() {
         const paths = this.paths
         this.fileTxts = paths.map(path => readFile(path))
-        core.info('paths')
-        core.info(JSON.stringify(this.fileTxts))
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
         const isHasChinese = this.ChineseTxts.find(txts => txts && txts.length)
         if (!isHasChinese) {
-            core.info('no Chinese file')
+            core.info('no Chinese file 没有中文')
             return
         }
+        core.info('paths')
+        core.info(JSON.stringify(this.ChineseTxts))
         return
         this.rebuildTxts = this.fileTxts.map((txt, i) => {
             const ChineseTxt = this.ChineseTxts[i]
             core.info(ChineseTxt)
-            return rebuildTxts(txt, ChineseTxt)
+            return ChineseTxt && ChineseTxt.length ? rebuildTxts(txt, ChineseTxt) : []
         })
         const ChineseArr = removeDuplicates(this.ChineseTxts).sort((a, b) => a.length - b.length)
         discardExistWords(ChineseArr, ZHlang)
         console.log(ChineseArr)
-        const res = translation(ChineseArr, auth_keys)
+        const res = ChineseArr.length ? translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
         this.repalceTxts = this.fileTxts.map((str, i) => {
