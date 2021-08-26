@@ -31,6 +31,7 @@ const func = {
         const newTxt = ''
         let txtIndex = 0
         let tempTxt = ''
+        core.info('txts')
         core.info(txts)
         const txtslen = txts.length
         for (let i = 0; i < txtslen; i++) {
