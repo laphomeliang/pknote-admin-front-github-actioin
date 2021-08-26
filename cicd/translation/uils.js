@@ -42,7 +42,7 @@ const func = {
         return newTxts
     },
     // is connect text
-    isConnect(txt, newObj, tempObj) {
+    isConnect: (txt, newObj, tempObj) => {
         const { index: nIndex, txt: nTxt } = newObj
         const { index: tIndex, txt: tTxt } = tempObj
         const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
