@@ -12,6 +12,7 @@ module.exports = {
     },
     // rebuild file text
     rebuildTxts(txt, txts) {
+        const that = this
         const newTxts = []
         const newTxt = ''
         let txtIndex = 0
@@ -27,7 +28,7 @@ module.exports = {
             }
             if (newTxtslen) {
                 const tempObj = newTxts[newTxtslen - 1]
-                const connected = this.isConnect(txt, newObj, tempObj)
+                const connected = that.isConnect(txt, newObj, tempObj)
                 if (connected) {
                     tempObj.txt = txt.substring(tempObj.index, tIndex + s.length)
                 } else {
