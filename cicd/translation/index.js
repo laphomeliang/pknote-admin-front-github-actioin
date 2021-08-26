@@ -1,4 +1,5 @@
 const fs = require('fs')
+const core = require('@actions/core')
 const { readFile, getChinese, rebuildTxts, removeDuplicates, discardExistWords, replaceTxt } = require('./uils')
 const { auth_keys, lang_dir, lang_en, lang_zh } = require('./config/config')
 let ENlang = getExitLang(`../../${ lang_dir }/${ lang_en }`) || {}
@@ -28,6 +29,7 @@ class Translater {
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
         this.rebuildTxts = this.fileTxts.map((txt, i) => {
             const ChineseTxt = this.ChineseTxts[i]
+            core.info(ChineseTxt)
             return rebuildTxts(txt, ChineseTxt)
         })
         const ChineseArr = removeDuplicates(this.ChineseTxts).sort((a, b) => a.length - b.length)
