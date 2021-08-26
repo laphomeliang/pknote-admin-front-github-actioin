@@ -32,5 +32,10 @@ jobs:
           npm ci
         working-directory: ./cicd/cd-translation
 
+      - name: run ci translation
+        run: |
+          npm ci
+        working-directory: ./cicd/translation
+
       - name: translate cd-translation
         uses: ./cicd/cd-translation/
