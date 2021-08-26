@@ -29,7 +29,9 @@ class Translater {
         core.info('paths')
         core.info(JSON.stringify(this.fileTxts))
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
-        if (!this.ChineseTxts.length) {
+        const isHasChinese = this.ChineseTxts.find(txts => txts && txts.length)
+        if (!isHasChinese) {
+            core.info('no Chinese file')
             return
         }
         return
