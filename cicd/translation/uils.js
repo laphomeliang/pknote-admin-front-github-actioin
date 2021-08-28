@@ -1,29 +1,16 @@
 const fs = require('fs')
 const core = require('@actions/core')
 const translate = require('deepl')
-const isConnect = (txt, newObj, tempObj) => {
-    const { index: nIndex, txt: nTxt } = newObj
-    const { index: tIndex, txt: tTxt } = tempObj
-    const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
-    let connected = false
-    const regRN = /\r\n/g
-    if (!regRN.test(inTxt)) {
-        if (inTxt.length < 3) {
-            connected = true
-        }
-    }
-    return connected
-}
-const func = {
+class func {
     // get file text content
     readFile(path) {
         return fs.readFileSync(path, 'utf8')
-    },
+    }
     // get Chinese content in file text
     getChinese(fileTxt) {
         const reg = new RegExp('[\u4e00-\u9fa5]+', 'g')
         return fileTxt.match(reg)
-    },
+    }
     // rebuild file text
     rebuildTxts(txt, txts) {
         const that = this
@@ -44,7 +31,7 @@ const func = {
             }
             if (newTxtslen) {
                 const tempObj = newTxts[newTxtslen - 1]
-                const connected = isConnect(txt, newObj, tempObj)
+                const connected = this.isConnect(txt, newObj, tempObj)
                 if (connected) {
                     tempObj.txt = txt.substring(tempObj.index, tIndex + s.length)
                 } else {
@@ -56,7 +43,7 @@ const func = {
             txtIndex = tIndex + s.length
         }
         return newTxts
-    },
+    }
     // is connect text
     isConnect(txt, newObj, tempObj) {
         const { index: nIndex, txt: nTxt } = newObj
@@ -70,12 +57,12 @@ const func = {
             }
         }
         return connected
-    },
+    }
     // remove Duplicates
     removeDuplicates(txts) {
         const flatArr = txts.flat()
         return [...new Set(flatArr)]
-    },
+    }
     // discard existing words
     discardExistWords(arr, obj) {
         const exisArr = Object.values(obj)
@@ -87,7 +74,7 @@ const func = {
             }
         }
         return arr
-    },
+    }
     // translate word
     async translation(txts, keys) {
         let ENlang = {}
@@ -106,7 +93,7 @@ const func = {
             ENlang,
             ZHlang
         }
-    },
+    }
     // circle send deep api
     async promiseCircle(txts, key) {
         const ENlang = {}
@@ -138,7 +125,7 @@ const func = {
             ZHlang,
             failTxts
         }
-    },
+    }
     // deep api
     translationTxt(txt, auth_key) {
         return translate({
@@ -148,7 +135,7 @@ const func = {
             source_lang: 'ZH',
             target_lang: 'EN'
         })
-    },
+    }
     // replace word
     replaceTxt(str, texts, ZHlang, ENlang, isKey) {
         const keys = Object.keys(ZHlang);
