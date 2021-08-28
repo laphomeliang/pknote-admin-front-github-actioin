@@ -2,6 +2,7 @@ const fs = require('fs')
 const core = require('@actions/core')
 const translate = require('deepl')
 class func {
+    constructor() {}
     // get file text content
     readFile(path) {
         return fs.readFileSync(path, 'utf8')
