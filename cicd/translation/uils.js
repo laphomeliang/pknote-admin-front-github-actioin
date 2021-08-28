@@ -31,7 +31,7 @@ class func {
             }
             if (newTxtslen) {
                 const tempObj = newTxts[newTxtslen - 1]
-                const connected = this.isConnect(txt, newObj, tempObj)
+                const connected = that.isConnect(txt, newObj, tempObj)
                 if (connected) {
                     tempObj.txt = txt.substring(tempObj.index, tIndex + s.length)
                 } else {
