@@ -1,7 +1,6 @@
 const fs = require('fs')
 const core = require('@actions/core')
-const uils = require('./uils')
-const { readFile, getChinese, rebuildTxts, removeDuplicates, discardExistWords, replaceTxt } = new uils()
+const { readFile, getChinese, rebuildTxts, removeDuplicates, discardExistWords, replaceTxt } = require('./uils')
 const { auth_keys, lang_dir, lang_en, lang_zh } = require('./config/config')
 let ENlang = getExitLang(`../../${ lang_dir }/${ lang_en }`) || {}
 let ZHlang = getExitLang(`../../${ lang_dir }/${ lang_zh }`) || {}
@@ -30,7 +29,7 @@ class Translater {
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
         const isHasChinese = this.ChineseTxts.find(txts => txts && txts.length)
         if (!isHasChinese) {
-            core.info('no Chinese file 没有 中文 ')
+            core.info('no Chinese file 没有 中 文')
             return
         }
         // 中文的 话
