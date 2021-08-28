@@ -5,6 +5,7 @@ const isConnect = (txt, newObj, tempObj) => {
     const { index: nIndex, txt: nTxt } = newObj
     const { index: tIndex, txt: tTxt } = tempObj
     const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
+    core.info(inTxt)
     let connected = false
     const regRN = /\r\n/g
     if (!regRN.test(inTxt)) {
