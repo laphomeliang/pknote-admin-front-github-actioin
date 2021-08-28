@@ -1,17 +1,29 @@
 const fs = require('fs')
 const core = require('@actions/core')
 const translate = require('deepl')
-class func {
-    constructor() {}
+const isConnect = (txt, newObj, tempObj) => {
+    const { index: nIndex, txt: nTxt } = newObj
+    const { index: tIndex, txt: tTxt } = tempObj
+    const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
+    let connected = false
+    const regRN = /\r\n/g
+    if (!regRN.test(inTxt)) {
+        if (inTxt.length < 3) {
+            connected = true
+        }
+    }
+    return connected
+}
+const func = {
     // get file text content
     readFile(path) {
         return fs.readFileSync(path, 'utf8')
-    }
+    },
     // get Chinese content in file text
     getChinese(fileTxt) {
         const reg = new RegExp('[\u4e00-\u9fa5]+', 'g')
         return fileTxt.match(reg)
-    }
+    },
     // rebuild file text
     rebuildTxts(txt, txts) {
         const that = this
@@ -20,7 +32,7 @@ class func {
         let txtIndex = 0
         let tempTxt = ''
         core.info('txts')
-        core.info(JSON.stringify(that))
+        core.info(txts)
         const txtslen = txts.length
         for (let i = 0; i < txtslen; i++) {
             const s = txts[i]
@@ -32,7 +44,7 @@ class func {
             }
             if (newTxtslen) {
                 const tempObj = newTxts[newTxtslen - 1]
-                const connected = that.isConnect(txt, newObj, tempObj)
+                const connected = isConnect(txt, newObj, tempObj)
                 if (connected) {
                     tempObj.txt = txt.substring(tempObj.index, tIndex + s.length)
                 } else {
@@ -44,7 +56,7 @@ class func {
             txtIndex = tIndex + s.length
         }
         return newTxts
-    }
+    },
     // is connect text
     isConnect(txt, newObj, tempObj) {
         const { index: nIndex, txt: nTxt } = newObj
@@ -58,12 +70,12 @@ class func {
             }
         }
         return connected
-    }
+    },
     // remove Duplicates
     removeDuplicates(txts) {
         const flatArr = txts.flat()
         return [...new Set(flatArr)]
-    }
+    },
     // discard existing words
     discardExistWords(arr, obj) {
         const exisArr = Object.values(obj)
@@ -75,7 +87,7 @@ class func {
             }
         }
         return arr
-    }
+    },
     // translate word
     async translation(txts, keys) {
         let ENlang = {}
@@ -94,7 +106,7 @@ class func {
             ENlang,
             ZHlang
         }
-    }
+    },
     // circle send deep api
     async promiseCircle(txts, key) {
         const ENlang = {}
@@ -126,7 +138,7 @@ class func {
             ZHlang,
             failTxts
         }
-    }
+    },
     // deep api
     translationTxt(txt, auth_key) {
         return translate({
@@ -136,7 +148,7 @@ class func {
             source_lang: 'ZH',
             target_lang: 'EN'
         })
-    }
+    },
     // replace word
     replaceTxt(str, texts, ZHlang, ENlang, isKey) {
         const keys = Object.keys(ZHlang);
