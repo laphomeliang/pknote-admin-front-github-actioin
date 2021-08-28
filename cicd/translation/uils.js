@@ -20,7 +20,7 @@ class func {
         let txtIndex = 0
         let tempTxt = ''
         core.info('txts')
-        core.info(txts)
+        core.info(JSON.stringify(that))
         const txtslen = txts.length
         for (let i = 0; i < txtslen; i++) {
             const s = txts[i]
