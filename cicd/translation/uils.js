@@ -27,8 +27,8 @@ const promiseCircle = async (txts, key) => {
     core.info('(results)')
     core.info(results)
     results.forEach(({ status, value}, i) => {
-        core.info(status)
         if (status === 'fulfilled') {
+            core.info(JSON.stringify(value))
             const { data } = value
             const enLang = data.translations[0].text
             const enLangArr = enLang.split(/\s/).map((s, index) => {
