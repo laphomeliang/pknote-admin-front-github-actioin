@@ -18,6 +18,7 @@ const isConnect = (txt, newObj, tempObj) => {
 }
 // circle send deep api
 const promiseCircle = async (txts, key) => {
+    core.info(txts)
     const ENlang = {}
     const ZHlang = {}
     const failTxts = []
