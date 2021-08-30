@@ -96,7 +96,7 @@ const func = {
         let ZHlang = {}
         for (let index = 0; index < keys.length; index++) {
             const key = keys[index]
-            const res = await promiseCircle(txts, key)
+            const res = await this.promiseCircle(txts, key)
             ENlang = { ...ENlang, ...res.ENlang }
             ZHlang = { ...ZHlang, ...res.ZHlang }
             if (!res.failTxts.length) {
