@@ -23,7 +23,7 @@ class Translater {
         this.paths = paths
         this.initTranslater()
     }
-    initTranslater() {
+    async initTranslater() {
         const paths = this.paths
         this.fileTxts = paths.map(path => readFile(path))
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
@@ -42,7 +42,7 @@ class Translater {
         discardExistWords(ChineseArr, ZHlang)
         core.info('ChineseArr')
         core.info(JSON.stringify(ChineseArr))
-        const res = ChineseArr.length ? translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
+        const res = ChineseArr.length ? await translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
         core.info('ENlang')
