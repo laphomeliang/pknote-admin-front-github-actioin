@@ -1,6 +1,6 @@
 const fs = require('fs')
 const core = require('@actions/core')
-const { readFile, getChinese, rebuildTxts, removeDuplicates, discardExistWords, replaceTxt } = require('./uils')
+const { readFile, getChinese, rebuildTxts, removeDuplicates, discardExistWords, replaceTxt, translation } = require('./uils')
 const { auth_keys, lang_dir, lang_en, lang_zh } = require('./config/config')
 let ENlang = getExitLang(`../../${ lang_dir }/${ lang_en }`) || {}
 let ZHlang = getExitLang(`../../${ lang_dir }/${ lang_zh }`) || {}
