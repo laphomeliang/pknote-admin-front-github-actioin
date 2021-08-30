@@ -164,6 +164,7 @@ const func = {
         const ZHlang = {}
         const failTxts = []
         const results = await Promise.allSettled(txts.map(({ txt }) => {
+            core.info('txts[0]')
             core.info(txts[0])
             return translationTxt(txt, key)
         }))
