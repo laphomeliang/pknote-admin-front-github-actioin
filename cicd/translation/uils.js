@@ -16,13 +16,15 @@ const isConnect = (txt, newObj, tempObj) => {
     }
     return connected
 }
-// circle send deep api 
+// circle send deep api
 const promiseCircle = async (txts, key) => {
     core.info(txts)
     const ENlang = {}
     const ZHlang = {}
     const failTxts = []
     const results = await Promise.allSettled(txts.map(({ txt }) => translationTxt(txt, key)))
+    core.info('(results)')
+    core.info(JSON.stringify(results))
     results.forEach(({ status, value}, i) => {
         if (status === 'fulfilled') {
             const { data } = value
