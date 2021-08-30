@@ -29,7 +29,7 @@ class Translater {
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
         const isHasChinese = this.ChineseTxts.find(txts => txts && txts.length)
         if (!isHasChinese) {
-            core.info('no Chinese file 没有，中文 ')
+            core.info('no Chinese file 没有中文 ')
             return
         }
         // 中文的 话
@@ -39,14 +39,13 @@ class Translater {
             return ChineseTxt && ChineseTxt.length ? rebuildTxts(txt, ChineseTxt) : []
         })
         const ChineseArr = removeDuplicates(this.ChineseTxts).sort((a, b) => a.length - b.length)
-        core.info('ChineseArr')
-        core.info(JSON.stringify(ChineseArr))
-        return
         discardExistWords(ChineseArr, ZHlang)
-        console.log(ChineseArr)
         const res = ChineseArr.length ? translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
+        core.info('ENlang')
+        core.info(JSON.stringify(ENlang))
+        return
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
             return replaceTxt(str, texts, ZHlang, ENlang)
