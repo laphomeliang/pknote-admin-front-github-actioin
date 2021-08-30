@@ -48,6 +48,16 @@ const promiseCircle = async (txts, key) => {
         failTxts
     }
 }
+// deep api
+const translationTxt = (txt, auth_key) => {
+    return translate({
+        auth_key,
+        text: txt,
+        free_api: true,
+        source_lang: 'ZH',
+        target_lang: 'EN'
+    })
+}
 const func = {
     // get file text content
     readFile(path) {
