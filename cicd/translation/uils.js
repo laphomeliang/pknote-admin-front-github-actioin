@@ -9,7 +9,7 @@ const isConnect = (txt, newObj, tempObj) => {
     core.info(inTxt)
     let connected = false
     const regRN = /\r\n/g
-    if (!regRN.test(inTxt)) {
+    if (!inTxt || !regRN.test(inTxt)) {
         if (inTxt.length < 3) {
             connected = true
         }
@@ -33,8 +33,8 @@ const func = {
         const newTxt = ''
         let txtIndex = 0
         let tempTxt = ''
-        core.info('txts')
-        core.info(txts)
+        // core.info('txts')
+        // core.info(txts)
         const txtslen = txts.length
         for (let i = 0; i < txtslen; i++) {
             const s = txts[i]
