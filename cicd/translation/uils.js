@@ -16,7 +16,7 @@ const isConnect = (txt, newObj, tempObj) => {
     }
     return connected
 }
-// circle send deep api
+// circle send deep api 
 const promiseCircle = async (txts, key) => {
     core.info(txts)
     const ENlang = {}
