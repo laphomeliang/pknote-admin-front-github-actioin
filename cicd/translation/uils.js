@@ -42,6 +42,7 @@ const promiseCircle = async (txts, key) => {
             const key = enLangArr.reduce(function(defaultS, s) {
                 return defaultS += s
             }, '')
+            core.info(key)
             ENlang[key] = enLang
             ZHlang[key] = txts[i].txt
         } else {
