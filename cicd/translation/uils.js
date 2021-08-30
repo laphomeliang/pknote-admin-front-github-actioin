@@ -79,7 +79,7 @@ const func = {
         return [...new Set(flatArr)]
     },
     // discard existing words
-    discardExistWords(arr, obj) {
+    discardExistWords(array, obj) {
         const exisArr = Object.values(obj)
         for (let index = 0; index < array.length; index++) {
             const word = array[index];
@@ -88,7 +88,7 @@ const func = {
                 index--
             }
         }
-        return arr
+        return array
     },
     // translate word
     async translation(txts, keys) {
