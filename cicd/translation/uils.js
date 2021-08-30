@@ -25,11 +25,10 @@ const promiseCircle = async (txts, key) => {
     const failTxts = []
     const results = await Promise.allSettled(txts.map(({ txt }) => translationTxt(txt, key)))
     core.info('(results)')
-    core.info(results)
     results.forEach(({ status, value}, i) => {
         if (status === 'fulfilled') {
-            core.info(JSON.stringify(value))
             const { data } = value
+            core.info(JSON.stringify(data))
             const enLang = data.translations[0].text
             const enLangArr = enLang.split(/\s/).map((s, index) => {
                 let str = s.replace(',', '')
