@@ -163,7 +163,10 @@ const func = {
         const ENlang = {}
         const ZHlang = {}
         const failTxts = []
-        const results = await Promise.allSettled(txts.map(({ txt }) => translationTxt(txt, key)))
+        const results = await Promise.allSettled(txts.map(({ txt }) => {
+            core.info(txts[0])
+            return translationTxt(txt, key)
+        }))
         results.forEach(({ status, value}, i) => {
             if (status === 'fulfilled') {
                 const { data } = value
