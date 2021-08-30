@@ -16,6 +16,38 @@ const isConnect = (txt, newObj, tempObj) => {
     }
     return connected
 }
+// circle send deep api
+const promiseCircle = async (txts, key) => {
+    const ENlang = {}
+    const ZHlang = {}
+    const failTxts = []
+    const results = await Promise.allSettled(txts.map(({ txt }) => translationTxt(txt, key)))
+    results.forEach(({ status, value}, i) => {
+        if (status === 'fulfilled') {
+            const { data } = value
+            const enLang = data.translations[0].text
+            const enLangArr = enLang.split(/\s/).map((s, index) => {
+                let str = s.replace(',', '')
+                if (index > 0) {
+                    str = str.charAt(0).toUpperCase() + str.slice(1)
+                }
+                return str
+            })
+            const key = enLangArr.reduce(function(defaultS, s) {
+                return defaultS += s
+            }, '')
+            ENlang[key] = enLang
+            ZHlang[key] = txts[i].txt
+        } else {
+            failTxts.push(txts[i])
+        }
+    })
+    return {
+        ENlang,
+        ZHlang,
+        failTxts
+    }
+}
 const func = {
     // get file text content
     readFile(path) {
@@ -96,7 +128,7 @@ const func = {
         let ZHlang = {}
         for (let index = 0; index < keys.length; index++) {
             const key = keys[index]
-            const res = await this.promiseCircle(txts, key)
+            const res = await promiseCircle(txts, key)
             ENlang = { ...ENlang, ...res.ENlang }
             ZHlang = { ...ZHlang, ...res.ZHlang }
             if (!res.failTxts.length) {
