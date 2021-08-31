@@ -5,8 +5,6 @@ const isConnect = (txt, newObj, tempObj) => {
     const { index: nIndex, txt: nTxt } = newObj
     const { index: tIndex, txt: tTxt } = tempObj
     const inTxt = txt.substring(tIndex + tTxt.length, nIndex)
-    core.info('inTxt')
-    core.info(inTxt)
     let connected = false
     const regRN = /\r\n/g
     if (!inTxt || !regRN.test(inTxt)) {
@@ -18,20 +16,14 @@ const isConnect = (txt, newObj, tempObj) => {
 }
 // circle send deep api
 const promiseCircle = async (txts, key) => {
-    core.info('txts')
-    core.info(txts)
     const ENlang = {}
     const ZHlang = {}
     const failTxts = []
     const results = await Promise.allSettled(txts.map((txt) => translationTxt(txt, key)))
-    core.info('(results)')
     results.forEach(({ status, value}, i) => {
-        core.info(status === 'fulfilled')
         if (status === 'fulfilled') {
-            core.info('enLang')
             const { data } = value
             const enLang = data.translations[0].text
-            core.info(enLang)
             const enLangArr = enLang.split(/\s/).map((s, index) => {
                 let str = s.replace(',', '')
                 if (index > 0) {
@@ -42,7 +34,6 @@ const promiseCircle = async (txts, key) => {
             const key = enLangArr.reduce(function(defaultS, s) {
                 return defaultS += s
             }, '')
-            core.info(key)
             ENlang[key] = enLang
             ZHlang[key] = txts[i].txt
         } else {
@@ -57,9 +48,6 @@ const promiseCircle = async (txts, key) => {
 }
 // deep api
 const translationTxt = (txt, auth_key) => {
-    core.info('txt5')
-    core.info(txt)
-    core.info(auth_key)
     return translate({
         auth_key,
         text: txt,
