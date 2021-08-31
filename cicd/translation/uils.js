@@ -207,7 +207,7 @@ const func = {
         const keys = Object.keys(ZHlang);
         core.info('JSON.stringify(keys)')
         core.info(JSON.stringify(ZHlang))
-        texts.forEach(({ txt }) => {
+        texts.forEach((txt) => {
             const key = keys.find(k => ZHlang[k] === txt);
             const repalceWord = isKey ? `$t.${ key }` : ENlang[key]
             str = str.replace(txt, (' ' + repalceWord + ' '))
