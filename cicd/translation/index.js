@@ -45,13 +45,13 @@ class Translater {
         const res = ChineseArr.length ? await translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
-        // core.info('ENlang')
-        // core.info(JSON.stringify(ENlang))
+        core.info('ZHlang')
+        core.info(JSON.stringify(ZHlang))
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
             return replaceTxt(str, texts, ZHlang, ENlang)
         })
-        
+
         core.info(JSON.stringify(this.repalceTxts))
         return
         const clonePath = `../../${ process.env.GIT_CLONE_PATH }/`
