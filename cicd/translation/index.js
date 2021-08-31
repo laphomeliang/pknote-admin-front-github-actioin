@@ -58,8 +58,6 @@ class Translater {
         const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
         fs.writeFileSync(langPath + lang_en, enStr, 'utf8')
         fs.writeFileSync(langPath + lang_zh, zhStr, 'utf8')
-        return
-
         this.repalceTxts.forEach((txt, i) => {
             const path = paths[i]
             fs.writeFileSync(clonePath + path, txt, 'utf8')
