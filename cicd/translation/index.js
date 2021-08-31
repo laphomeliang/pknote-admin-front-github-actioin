@@ -35,18 +35,18 @@ class Translater {
         // 中文的 话
         this.rebuildTxts = this.fileTxts.map((txt, i) => {
             const ChineseTxt = this.ChineseTxts[i]
-            core.info(ChineseTxt)
+            // core.info(ChineseTxt)
             return ChineseTxt && ChineseTxt.length ? rebuildTxts(txt, ChineseTxt) : []
         })
         const ChineseArr = removeDuplicates(this.ChineseTxts).sort((a, b) => a && b && a.length - b.length).filter(s => s && s.trim())
         discardExistWords(ChineseArr, ZHlang)
-        core.info('ChineseArr')
-        core.info(JSON.stringify(ChineseArr))
+        // core.info('ChineseArr')
+        // core.info(JSON.stringify(ChineseArr))
         const res = ChineseArr.length ? await translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
-        core.info('ENlang')
-        core.info(JSON.stringify(ENlang))
+        // core.info('ENlang')
+        // core.info(JSON.stringify(ENlang))
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
             return replaceTxt(str, texts, ZHlang, ENlang)
