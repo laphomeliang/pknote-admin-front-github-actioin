@@ -47,11 +47,12 @@ class Translater {
         ZHlang = { ...ZHlang, ...res.ZHlang }
         core.info('ENlang')
         core.info(JSON.stringify(ENlang))
-        return
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
             return replaceTxt(str, texts, ZHlang, ENlang)
         })
+        core.info(JSON.stringify(this.repalceTxts))
+        return
         const clonePath = `../../${ process.env.GIT_CLONE_PATH }/`
         const langPath = `${ clonePath }${ lang_dir }/`
         const enStr = 'export default {commonLang:'  + JSON.stringify(ENlang) + '};'
