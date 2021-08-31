@@ -1,6 +1,7 @@
 const fs = require('fs')
 const core = require('@actions/core')
 const translate = require('deepl')
+const randomString = require('random-string');
 const isConnect = (txt, newObj, tempObj) => {
     const { index: nIndex, txt: nTxt } = newObj
     const { index: tIndex, txt: tTxt } = tempObj
@@ -31,9 +32,18 @@ const promiseCircle = async (txts, key) => {
                 }
                 return str
             })
-            const key = enLangArr.reduce(function(defaultS, s) {
+            let key = enLangArr.reduce(function(defaultS, s) {
                 return defaultS += s
             }, '')
+            if (ENlang.hasOwnProperty(key)) {
+                const x = randomString({
+                    length: 8,
+                    numeric: true,
+                    letters: true,
+                    special: false
+                })
+                key += x
+            }
             ENlang[key] = enLang
             ZHlang[key] = txts[i]
         } else {
@@ -169,6 +179,7 @@ const func = {
                 const key = enLangArr.reduce(function(defaultS, s) {
                     return defaultS += s
                 }, '')
+                
                 ENlang[key] = enLang
                 ZHlang[key] = txts[i].txt
             } else {
