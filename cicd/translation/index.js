@@ -51,7 +51,6 @@ class Translater {
             const texts = this.ChineseTxts[i]
             return texts && texts.length ? replaceTxt(str, texts, ZHlang, ENlang) : str
         })
-
         core.info(JSON.stringify(this.repalceTxts))
         return
         const clonePath = `../../${ process.env.GIT_CLONE_PATH }/`
