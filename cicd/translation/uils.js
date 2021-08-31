@@ -35,7 +35,7 @@ const promiseCircle = async (txts, key) => {
                 return defaultS += s
             }, '')
             ENlang[key] = enLang
-            ZHlang[key] = txts[i].txt
+            ZHlang[key] = txts[i]
         } else {
             failTxts.push(txts[i])
         }
