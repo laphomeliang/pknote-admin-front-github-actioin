@@ -49,9 +49,9 @@ class Translater {
         core.info(JSON.stringify(ENlang))
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
-            return replaceTxt(str, texts, ZHlang, ENlang)
+            return texts && texts.length ? replaceTxt(str, texts, ZHlang, ENlang) : str
         })
-        
+
         core.info(JSON.stringify(this.repalceTxts))
         return
         const clonePath = `../../${ process.env.GIT_CLONE_PATH }/`
