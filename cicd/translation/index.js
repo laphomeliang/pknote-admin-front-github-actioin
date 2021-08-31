@@ -51,14 +51,15 @@ class Translater {
             const texts = this.ChineseTxts[i]
             return texts && texts.length ? replaceTxt(str, texts, ZHlang, ENlang) : str
         })
-        core.info(JSON.stringify(this.repalceTxts))
-        return
+        // core.info(JSON.stringify(this.repalceTxts))
         const clonePath = `../../${ process.env.GIT_CLONE_PATH }/`
         const langPath = `${ clonePath }${ lang_dir }/`
         const enStr = 'export default {commonLang:'  + JSON.stringify(ENlang) + '};'
         const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
         fs.writeFileSync(langPath + lang_en, enStr, 'utf8')
         fs.writeFileSync(langPath + lang_zh, zhStr, 'utf8')
+        return
+
         this.repalceTxts.forEach((txt, i) => {
             const path = paths[i]
             fs.writeFileSync(clonePath + path, txt, 'utf8')
