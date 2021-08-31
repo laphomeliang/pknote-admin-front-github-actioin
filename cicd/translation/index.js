@@ -53,15 +53,17 @@ class Translater {
         })
         // core.info(JSON.stringify(this.repalceTxts))
         const clonePath = `../../${ process.env.GIT_CLONE_PATH }/`
-        const langPath = `${ clonePath }${ lang_dir }/`
-        const enStr = 'export default {commonLang:'  + JSON.stringify(ENlang) + '};'
-        const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
-        fs.writeFileSync(langPath + lang_en, enStr, 'utf8')
-        fs.writeFileSync(langPath + lang_zh, zhStr, 'utf8')
-        this.repalceTxts.forEach((txt, i) => {
-            const path = paths[i]
-            fs.writeFileSync(clonePath + path, txt, 'utf8')
-        })
+        if (Object.keys(res.ENlang).length) {
+            const langPath = `${ clonePath }${ lang_dir }/`
+            const enStr = 'export default {commonLang:'  + JSON.stringify(ENlang) + '};'
+            const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
+            fs.writeFileSync(langPath + lang_en, enStr, 'utf8')
+            fs.writeFileSync(langPath + lang_zh, zhStr, 'utf8')
+        }
+        // this.repalceTxts.forEach((txt, i) => {
+        //     const path = paths[i]
+        //     fs.writeFileSync(clonePath + path, txt, 'utf8')
+        // })
     }
 }
 
