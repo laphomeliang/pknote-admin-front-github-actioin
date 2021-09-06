@@ -47,7 +47,7 @@ class Translater {
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
         core.info('ENlang')
-        core.info(JSON.stringify(ENlang))
+        core.info(JSON.stringify(res))
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
             return texts && texts.length ? replaceTxt(str, texts, ZHlang, ENlang) : str
