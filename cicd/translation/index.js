@@ -46,8 +46,8 @@ class Translater {
         const res = ChineseArr.length ? await translation(ChineseArr, auth_keys) : { ENlang: {}, ZHlang: {} }
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
-        // core.info('ENlang')
-        // core.info(JSON.stringify(ENlang))
+        core.info('ENlang')
+        core.info(JSON.stringify(ENlang))
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
             return texts && texts.length ? replaceTxt(str, texts, ZHlang, ENlang) : str
