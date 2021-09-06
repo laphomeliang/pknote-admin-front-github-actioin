@@ -56,7 +56,7 @@ class Translater {
             return texts && texts.length ? replaceTxt(str, texts, ZHlang, ENlang) : str
         })
         // core.info(JSON.stringify(this.repalceTxts))
-        const clonePath = `../../${ process.env.GIT_CLONE_PATH }/`
+        const clonePath = `${ process.env.GIT_CLONE_PATH }/`
         if (Object.keys(res.ENlang).length) {
             const langPath = `${ clonePath }${ lang_dir }/`
             core.info(`${ process.env.GIT_CLONE_PATH }`)
