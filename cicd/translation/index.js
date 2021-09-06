@@ -5,6 +5,7 @@ const { auth_keys, lang_dir, lang_en, lang_zh } = require('./config/config')
 let ENlang = getExitLang(`../../${ lang_dir }/${ lang_en }`) || {}
 let ZHlang = getExitLang(`../../${ lang_dir }/${ lang_zh }`) || {}
 // get exit word
+core.info(JSON.stringify(ENlang))
 function getExitLang(path) {
     try {
         const str = fs.readFileSync(path, { encoding: 'utf-8' })
