@@ -10,7 +10,7 @@ try {
         const args2 = ['diff', '--name-only', 'HEAD~', 'HEAD']
         let myOutput = ''
         const options = {
-            cwd: `${ process.env.GITHUB_REPOSITORY }`,
+            cwd: `${ process.env.GIT_CLONE_PATH }`,
             listeners: {
                 stdout: data => {
                     myOutput = data.toString();
