@@ -9,6 +9,7 @@ core.info(JSON.stringify(ENlang))
 function getExitLang(path) {
     try {
         const str = fs.readFileSync(path, { encoding: 'utf-8' })
+        console.log(str)
         const sindex = str.indexOf('commonLang:')
         const lindex = str.indexOf('}', sindex)
         let langStr = str.substring(sindex + 11, lindex + 1).replace(/\s+/g, '').replace(/\'/g, '"')
