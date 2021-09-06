@@ -59,6 +59,8 @@ const promiseCircle = async (txts, key) => {
 }
 // deep api
 const translationTxt = (txt, auth_key) => {
+    core.info(auth_key)
+    core.info(txt)
     return translate({
         auth_key,
         text: txt,
