@@ -4,7 +4,6 @@ const core = require('@actions/core')
 const Translater = require('../translation/index')
 
 try {
-    core.info('88888!')
     new Promise(async function (resolve, reject) {
         const gitPath = await io.which('git', true)
         const gitFilePath = `"${gitPath}"`

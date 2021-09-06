@@ -2,8 +2,8 @@ const fs = require('fs')
 const core = require('@actions/core')
 const { readFile, getChinese, rebuildTxts, removeDuplicates, discardExistWords, replaceTxt, translation } = require('./uils')
 const { auth_keys, lang_dir, lang_en, lang_zh } = require('./config/config')
-let ENlang = getExitLang(`../../${ lang_dir }/${ lang_en }`) || {}
-let ZHlang = getExitLang(`../../${ lang_dir }/${ lang_zh }`) || {}
+let ENlang = getExitLang(`../${ lang_dir }/${ lang_en }`) || {}
+let ZHlang = getExitLang(`../${ lang_dir }/${ lang_zh }`) || {}
 // get exit word
 core.info('JSON.stringify(ENlang)')
 core.info(JSON.stringify(ENlang))
