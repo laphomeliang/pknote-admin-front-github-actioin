@@ -3,6 +3,7 @@ const io = require('@actions/io')
 const core = require('@actions/core')
 const Translater = require('../translation/index')
 
+core.info('88888!')
 try {
     new Promise(async function (resolve, reject) {
         const gitPath = await io.which('git', true)
