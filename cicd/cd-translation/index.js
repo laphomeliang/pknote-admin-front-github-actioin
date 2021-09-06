@@ -23,7 +23,9 @@ try {
         const translatePaths = filterPath(paths)
         new Translater(translatePaths)
     })
-} catch (error) {}
+} catch (error) {
+    core.error(error)
+}
 
 // get all paths of commit files
 function splitPaths(str) {
