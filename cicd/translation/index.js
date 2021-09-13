@@ -30,7 +30,7 @@ class Translater {
         this.ChineseTxts = this.fileTxts.map(txt => getChinese(txt))
         const isHasChinese = this.ChineseTxts.find(txts => txts && txts.length)
         if (!isHasChinese) {
-            core.info('no Chinese file 没有 中文 ')
+            core.info('no Chinese file 没有中文 ')
             return
         }
         // 中文的 话
@@ -47,7 +47,7 @@ class Translater {
         ENlang = { ...ENlang, ...res.ENlang }
         ZHlang = { ...ZHlang, ...res.ZHlang }
         core.info('ENlang')
-        core.info(JSON.stringify(ChineseArr))
+        core.info(JSON.stringify(ENlang))
         this.repalceTxts = this.fileTxts.map((str, i) => {
             const texts = this.ChineseTxts[i]
             return texts && texts.length ? replaceTxt(str, texts, ZHlang, ENlang) : str
