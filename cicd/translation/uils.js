@@ -22,7 +22,7 @@ const promiseCircle = async (txts, key) => {
     const failTxts = []
     const results = await Promise.allSettled(txts.map((txt) => translationTxt(txt, key)))
     results.forEach(({ status, value}, i) => {
-        core.info(status)
+        // core.info(status)
         if (status === 'fulfilled') {
             const { data } = value
             const enLang = data.translations[0].text
@@ -59,8 +59,8 @@ const promiseCircle = async (txts, key) => {
 }
 // deep api
 const translationTxt = (txt, auth_key) => {
-    core.info(auth_key)
-    core.info(txt)
+    // core.info(auth_key)
+    // core.info(txt)
     return translate({
         auth_key,
         text: txt,
@@ -182,7 +182,7 @@ const func = {
                 const key = enLangArr.reduce(function(defaultS, s) {
                     return defaultS += s
                 }, '')
-                
+
                 ENlang[key] = enLang
                 ZHlang[key] = txts[i].txt
             } else {

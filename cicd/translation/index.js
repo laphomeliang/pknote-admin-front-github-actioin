@@ -57,6 +57,7 @@ class Translater {
         if (Object.keys(res.ENlang).length) {
             const langPath = `${ clonePath }${ lang_dir }/`
             core.info(`${ process.env.GIT_CLONE_PATH }`)
+            core.info(langPath)
             core.info(fs.existsSync(`../../${ lang_dir }/${ lang_en }`))
             // const enStr = 'export default {commonLang:'  + JSON.stringify(ENlang) + '};'
             // const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
