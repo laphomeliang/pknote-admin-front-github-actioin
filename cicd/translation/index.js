@@ -66,9 +66,9 @@ class Translater {
         }
         this.repalceTxts.forEach((txt, i) => {
             const path = paths[i]
-            core.info(clonePath + path)
-            core.info(fs.existsSync(clonePath + path))
-            // fs.writeFileSync(clonePath + path, txt, 'utf8')
+            fs.writeFileSync(clonePath + path, txt, 'utf8')
+            const fsr = fs.readFileSync(clonePath + path, 'utf8')
+            core.info(fsr)
         })
     }
 }
