@@ -58,7 +58,7 @@ class Translater {
             const langPath = `${ clonePath }${ lang_dir }/`
             core.info(`${ process.env.GIT_CLONE_PATH }`)
             core.info(langPath)
-            core.info(fs.existsSync(`../../${ lang_dir }/${ lang_en }`))
+            core.info(fs.existsSync(langPath))
             // const enStr = 'export default {commonLang:'  + JSON.stringify(ENlang) + '};'
             // const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
             // fs.writeFileSync(langPath + lang_en, enStr, 'utf8')
