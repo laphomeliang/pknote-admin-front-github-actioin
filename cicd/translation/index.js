@@ -63,6 +63,8 @@ class Translater {
             const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
             fs.writeFileSync(langPath + lang_en, enStr, 'utf8')
             fs.writeFileSync(langPath + lang_zh, zhStr, 'utf8')
+            const zh = getExitLang(langPath + lang_zh);
+            core.info(JSON.stringify(zh))
         }
         // this.repalceTxts.forEach((txt, i) => {
         //     const path = paths[i]
