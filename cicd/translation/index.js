@@ -56,9 +56,6 @@ class Translater {
         const clonePath = `${ process.env.GIT_CLONE_PATH }/`
         if (Object.keys(res.ENlang).length) {
             const langPath = `${ clonePath }${ lang_dir }/`
-            // core.info(langPath + lang_en)
-            // core.info(langPath)
-            // core.info(fs.existsSync(langPath + lang_en))
             const enStr = 'export default {commonLang:'  + JSON.stringify(ENlang) + '};'
             const zhStr = 'export default {commonLang:'  + JSON.stringify(ZHlang) + '};'
             fs.writeFileSync(langPath + lang_en, enStr, 'utf8')
@@ -67,8 +64,6 @@ class Translater {
         this.repalceTxts.forEach((txt, i) => {
             const path = paths[i]
             fs.writeFileSync(clonePath + path, txt, 'utf8')
-            const fsr = fs.readFileSync(clonePath + path, 'utf8')
-            core.info(fsr)
         })
     }
 }
